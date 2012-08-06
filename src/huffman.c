@@ -19,14 +19,14 @@ struct node{
 
 typedef struct node Node;
 
-/* 81 = 8.1%, 128 = 12.8% and so on. The 27th frequency is the space. Source is Wikipedia */
-int englishLetterFrequencies [27] = {81, 15, 28, 43, 128, 23, 20, 61, 71, 2, 1, 40, 24, 69, 76, 20, 1, 61, 64, 91, 28, 10, 24, 1, 20, 1, 130};
+/* 651 = 6.51%, 1740 = 17.40% and so on. The 27th frequency is the beta (ASCII character code 225) 28th frequency is the space. Source is Wikipedia */
+int germanLetterFrequencies [28] = {651, 189, 306, 508, 1740, 166, 301, 476, 755, 27, 121, 344, 253, 978, 251, 79, 2, 700, 727, 615, 435, 067, 189, 3, 4, 113, 31, 180};
 
 /*finds and returns the small sub-tree in the forrest*/
 int findSmaller (Node *array[], int differentFrom){
     int smaller;
     int i = 0;
-
+	
     while (array[i]->value==-1)
         i++;
     smaller=i;
@@ -36,8 +36,8 @@ int findSmaller (Node *array[], int differentFrom){
             i++;
         smaller=i;
     }
-
-    for (i=1;i<27;i++){
+	
+    for (i=1;i<28;i++){
         if (array[i]->value==-1)
             continue;
         if (i==differentFrom)
@@ -45,17 +45,17 @@ int findSmaller (Node *array[], int differentFrom){
         if (array[i]->value<array[smaller]->value)
             smaller = i;
     }
-
+	
     return smaller;
 }
 
 /*builds the huffman tree and returns its address by reference*/
 void buildHuffmanTree(Node **tree){
     Node *temp;
-    Node *array[27];
-    int i, subTrees = 27;
+    Node *array[28];
+    int i, subTrees = 28;
     int smallOne,smallTwo;
-
+	
     for (i=0;i<27;i++){
         array[i] = malloc(sizeof(Node));
         array[i]->value = englishLetterFrequencies[i];
@@ -63,7 +63,7 @@ void buildHuffmanTree(Node **tree){
         array[i]->left = NULL;
         array[i]->right = NULL;
     }
-
+	
     while (subTrees>1){
         smallOne=findSmaller(array,-1);
         smallTwo=findSmaller(array,smallOne);
@@ -76,21 +76,45 @@ void buildHuffmanTree(Node **tree){
         array[smallTwo]->value=-1;
         subTrees--;
     }
-
+	
     *tree = array[smallOne];
-
-return;
+	
+	return;
 }
+
+
+//Print the table with 90 degree rotation
+void padding ( char ch, int n )
+{
+	int i;
+	for ( i = 0; i < n; i++ )
+		putchar ( ch );
+}
+void structure ( struct node *root, int level )
+{
+	int i;
+	if ( root == NULL ) {
+		padding ( '\t', level );
+		puts ( "~" );
+	}
+	else {
+		structure ( root->right, level + 1 );
+		padding ( '\t', level );
+		printf ( "%d\n", root->value);
+		structure ( root->left, level + 1 );
+	}
+}
+
 
 /* builds the table with the bits for each letter. 1 stands for binary 0 and 2 for binary 1 (used to facilitate arithmetic)*/
 void fillTable(int codeTable[], Node *tree, int Code){
-    if (tree->letter<27)
+    if (tree->letter<28)
         codeTable[(int)tree->letter] = Code;
     else{
         fillTable(codeTable, tree->left, Code*10+1);
         fillTable(codeTable, tree->right, Code*10+2);
     }
-
+	
     return;
 }
 
@@ -99,7 +123,7 @@ void compressFile(FILE *input, FILE *output, int codeTable[]){
     char bit, c, x = 0;
     int n,length,bitsLeft = 8;
     int originalBits = 0, compressedBits = 0;
-
+	
     while ((c=fgetc(input))!=10){
         originalBits++;
         if (c==32){
@@ -110,7 +134,7 @@ void compressFile(FILE *input, FILE *output, int codeTable[]){
             length=len(codeTable[c-97]);
             n = codeTable[c-97];
         }
-
+		
         while (length>0){
             compressedBits++;
             bit = n % 10 - 1;
@@ -126,17 +150,17 @@ void compressFile(FILE *input, FILE *output, int codeTable[]){
             x = x << 1;
         }
     }
-
+	
     if (bitsLeft!=8){
         x = x << (bitsLeft-1);
         fputc(x,output);
     }
-
+	
     /*print details of compression on the screen*/
     fprintf(stderr,"Original bits = %d\n",originalBits*8);
     fprintf(stderr,"Compressed bits = %d\n",compressedBits);
     fprintf(stderr,"Saved %.2f%% of memory\n",((float)compressedBits/(originalBits*8))*100);
-
+	
     return;
 }
 
@@ -146,9 +170,9 @@ void decompressFile (FILE *input, FILE *output, Node *tree){
     char c,bit;
     char mask = 1 << 7;
     int i;
-
+	
     while ((c=fgetc(input))!=EOF){
-
+		
         for (i=0;i<8;i++){
             bit = c & mask;
             c = c << 1;
@@ -162,7 +186,7 @@ void decompressFile (FILE *input, FILE *output, Node *tree){
                     current = tree;
                 }
             }
-
+			
             else{
                 current = current->right;
                 if (current->letter!=127){
@@ -175,15 +199,15 @@ void decompressFile (FILE *input, FILE *output, Node *tree){
             }
         }
     }
-
+	
     return;
 }
 
 /*invert the codes in codeTable2 so they can be used with mod operator by compressFile function*/
 void invertCodes(int codeTable[],int codeTable2[]){
     int i, n, copy;
-
-    for (i=0;i<27;i++){
+	
+    for (i=0;i<29;i++){
         n = codeTable[i];
         copy = 0;
         while (n>0){
@@ -192,36 +216,41 @@ void invertCodes(int codeTable[],int codeTable2[]){
         }
         codeTable2[i]=copy;
     }
-
-return;
+	
+	return;
 }
 
 int main(){
     Node *tree;
-    int codeTable[27], codeTable2[27];
+    int codeTable[28], codeTable2[28];
     int compress;
     char filename[20];
     FILE *input, *output;
-
+	
     buildHuffmanTree(&tree);
-
+	
+	//print the tree
+	structure ( tree, 0 );
+	
+	return 1;
+	
     fillTable(codeTable, tree, 0);
-
+	
     invertCodes(codeTable,codeTable2);
-
+	
     /*get input details from user*/
     printf("Type the name of the file to process:\n");
     scanf("%s",filename);
     printf("Type 1 to compress and 2 to decompress:\n");
     scanf("%d",&compress);
-
+	
     input = fopen(filename, "r");
     output = fopen("output.txt","w");
-
+	
     if (compress==1)
         compressFile(input,output,codeTable2);
     else
         decompressFile(input,output, tree);
-
+	
     return 0;
 }
