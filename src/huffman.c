@@ -44,7 +44,7 @@ void compress(char *infile, char *outfile)
 		else
 		{
 			 /* since the space and the character § are out of range of our alphabet and we use integer arithmetic to figu
-			 	re out the huffman value, we put sepeate if statement for them
+			 	re out the huffman value, we put sepeate if statement for them*/
 			 if (ch == 32)
 			 {
 			 	strcpy(buffer, "001");
