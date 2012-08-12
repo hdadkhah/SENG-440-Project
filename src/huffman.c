@@ -286,10 +286,7 @@ int main(int argc, char *argv[])
    int index;
    int c;
    opterr = 0;
-   
-   /* Clear The Screen */
-   system ("clear");
-   
+
    while ((c = getopt (argc, argv, "cd")) != -1)
      switch (c)
        {
