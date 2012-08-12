@@ -43,6 +43,8 @@ void compress(char *infile, char *outfile)
 			break;
 		else
 		{
+			 /* since the space and the character § are out of range of our alphabet and we use integer arithmetic to figu
+			 	re out the huffman value, we put sepeate if statement for them
 			 if (ch == 32)
 			 {
 			 	strcpy(buffer, "001");
@@ -53,6 +55,8 @@ void compress(char *infile, char *outfile)
 			 }
 			 else
 			 {	
+			 	/* we dont care for characters out of range for our purpose, such as . or ', we just consider 25 letters of 
+			 	alphabet and space and §*/
 			 	if ((ch > 96) & (ch < 123))
 			 	{	 
 					strcpy(buffer,ALPHA[(int)ch-97]);
