@@ -232,7 +232,7 @@ void decompress (char *infile, char *outfile)
    				i = 1;
    			}
        	}
-       	if (i == 1)
+       	if (i == 9)
        	{
        		if (strncmp(buffer, "11111001", 8) == 0)
    			{
