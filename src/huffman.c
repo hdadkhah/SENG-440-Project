@@ -108,14 +108,14 @@ void decompress (char *infile, char *outfile)
        	switch(i)
        	{
        		case 4:
-   			if (strncmp(buffer, "001", 3) == 0)
+   			if (memcpy(buffer, "001", 3) == 0)
    			{
    				fputc(32, out);
    				buffer[0] = ch;
 				i=2;
 				
    			}
-   			if (strncmp(buffer, ALPHA[4], 3) == 0)
+   			if (memcpy(buffer, ALPHA[4], 3) == 0)
    			{
    				fputc(ALPHA_REVERSE[4], out);
    				buffer[0] = ch;
@@ -124,49 +124,49 @@ void decompress (char *infile, char *outfile)
    			}
        		break;
        		case 5:
-       				if (strncmp(buffer, ALPHA[13], 4) == 0)
+       				if (memcpy(buffer, ALPHA[13], 4) == 0)
 	   			{
 	   				fputc(ALPHA_REVERSE[13], out);
 	   				buffer[0] = ch;
 					i=2;
 					
 	   			}
-	   			if (strncmp(buffer, ALPHA[8], 4) == 0)
+	   			if (memcpy(buffer, ALPHA[8], 4) == 0)
 	   			{
 	   				fputc(ALPHA_REVERSE[8], out);
 	   				buffer[0] = ch;
 					i=2;
 					
 	   			}
-	   			if (strncmp(buffer, ALPHA[18], 4) == 0)
+	   			if (memcpy(buffer, ALPHA[18], 4) == 0)
 	   			{
 	   				fputc(ALPHA_REVERSE[18], out);
 	   				buffer[0] = ch;
 					i=2;
 					
 	   			}
-	   			if (strncmp(buffer, ALPHA[17], 4) == 0)
+	   			if (memcpy(buffer, ALPHA[17], 4) == 0)
 	   			{
 	   				fputc(ALPHA_REVERSE[17], out);
 	   				buffer[0] = ch;
 					i=2;
 					
 	   			}
-	   			if (strncmp(buffer, ALPHA[0], 4) == 0)
+	   			if (memcpy(buffer, ALPHA[0], 4) == 0)
 	   			{
 	   				fputc(ALPHA_REVERSE[0], out);
 	   				buffer[0] = ch;
 					i=2;
 					
 	   			}
-	   			if (strncmp(buffer, ALPHA[19], 4) == 0)
+	   			if (memcpy(buffer, ALPHA[19], 4) == 0)
 	   			{
 	   				fputc(ALPHA_REVERSE[19], out);
 	   				buffer[0] = ch;
 					i=2;
 					
 	   			}
-	   			if (strncmp(buffer, ALPHA[3], 4) == 0)
+	   			if (memcpy(buffer, ALPHA[3], 4) == 0)
 	   			{
 	   				fputc(ALPHA_REVERSE[3], out);
 	   				buffer[0] = ch;
@@ -175,49 +175,49 @@ void decompress (char *infile, char *outfile)
 	   			}
        			break;
        		case 6:
-	       		if (strncmp(buffer, ALPHA[7], 5) == 0)
+	       		if (memcpy(buffer, ALPHA[7], 5) == 0)
 	   			{
 	   				fputc(ALPHA_REVERSE[7], out);
 	   				buffer[0] = ch;
 					i=2;
 					
 	   			}
-	   			if (strncmp(buffer, ALPHA[20], 5) == 0)
+	   			if (memcpy(buffer, ALPHA[20], 5) == 0)
 	   			{
 	   				fputc(ALPHA_REVERSE[20], out);
 	   				buffer[0] = ch;
 					i=2;
 					
 	   			}
-	   			if (strncmp(buffer, ALPHA[11], 5) == 0)
+	   			if (memcpy(buffer, ALPHA[11], 5) == 0)
 	   			{
 	   				fputc(ALPHA_REVERSE[11], out);
 	   				buffer[0] = ch;
 					i=2;
 					
 	   			}
-	   			if (strncmp(buffer, ALPHA[2], 5) == 0)
+	   			if (memcpy(buffer, ALPHA[2], 5) == 0)
 	   			{
 	   				fputc(ALPHA_REVERSE[2], out);
 	   				buffer[0] = ch;
 					i=2;
 					
 	   			}
-	   			if (strncmp(buffer, ALPHA[6], 5) == 0)
+	   			if (memcpy(buffer, ALPHA[6], 5) == 0)
 	   			{
 	   				fputc(ALPHA_REVERSE[6], out);
 	   				buffer[0] = ch;
 					i=2;
 					
 	   			}
-	   			if (strncmp(buffer, ALPHA[12], 5) == 0)
+	   			if (memcpy(buffer, ALPHA[12], 5) == 0)
 	   			{
 	   				fputc(ALPHA_REVERSE[12], out);
 	   				buffer[0] = ch;
 					i=2;
 					
 	   			}
-	   			if (strncmp(buffer, ALPHA[14], 5) == 0)
+	   			if (memcpy(buffer, ALPHA[14], 5) == 0)
 	   			{
 	   				fputc(ALPHA_REVERSE[14], out);
 	   				buffer[0] = ch;
@@ -226,28 +226,28 @@ void decompress (char *infile, char *outfile)
 	   			}
        			break;
        		case 7:
-	       		if (strncmp(buffer, ALPHA[22], 6) == 0)
+	       		if (memcpy(buffer, ALPHA[22], 6) == 0)
 	   			{
 	   				fputc(ALPHA_REVERSE[22], out);
 	   				buffer[0] = ch;
 					i=2;
 					
 	   			}
-	   			if (strncmp(buffer, ALPHA[1], 6) == 0)
+	   			if (memcpy(buffer, ALPHA[1], 6) == 0)
 	   			{
 	   				fputc(ALPHA_REVERSE[1], out);
 	   				buffer[0] = ch;
 					i=2;
 					
 	   			}
-	   			if (strncmp(buffer, ALPHA[5], 6) == 0)
+	   			if (memcpy(buffer, ALPHA[5], 6) == 0)
 	   			{
 	   				fputc(ALPHA_REVERSE[5], out);
 	   				buffer[0] = ch;
 					i=2;
 					
 	   			}
-	   			if (strncmp(buffer, ALPHA[10], 6) == 0)
+	   			if (memcpy(buffer, ALPHA[10], 6) == 0)
 	   			{
 	   				fputc(ALPHA_REVERSE[10], out);
 	   				buffer[0] = ch;
@@ -256,21 +256,21 @@ void decompress (char *infile, char *outfile)
 	   			}
 	       		break;
        		case 8:
-       			if (strncmp(buffer, ALPHA[25], 7) == 0)
+       			if (memcpy(buffer, ALPHA[25], 7) == 0)
 	   			{
 	   				fputc(ALPHA_REVERSE[25], out);
 	   				buffer[0] = ch;
 					i=2;
 					
 	   			}
-	   			if (strncmp(buffer, ALPHA[15], 7) == 0)
+	   			if (memcpy(buffer, ALPHA[15], 7) == 0)
 	   			{
 	   				fputc(ALPHA_REVERSE[15], out);
 	   				buffer[0] = ch;
 					i=2;
 					
 	   			}
-	   			if (strncmp(buffer, ALPHA[21], 7) == 0)
+	   			if (memcpy(buffer, ALPHA[21], 7) == 0)
 	   			{
 	   				fputc(ALPHA_REVERSE[21], out);
 	   				buffer[0] = ch;
@@ -279,7 +279,7 @@ void decompress (char *infile, char *outfile)
 	   			}
 	       		break;
        		case 9:
-       			if (strncmp(buffer, "11111001", 8) == 0)
+       			if (memcpy(buffer, "11111001", 8) == 0)
 	   			{
 	   				fputc(225, out);
 	   				buffer[0] = ch;
@@ -288,7 +288,7 @@ void decompress (char *infile, char *outfile)
 	   			}
        			break;
        		case 10:
-	       		if (strncmp(buffer, ALPHA[9] , 9) == 0)
+	       		if (memcpy(buffer, ALPHA[9] , 9) == 0)
 	   			{
 	   				fputc(ALPHA_REVERSE[9], out);
 	   				buffer[0] = ch;
@@ -297,7 +297,7 @@ void decompress (char *infile, char *outfile)
 	   			}
        			break;
        		case 11:
-	       		if (strncmp(buffer, ALPHA[24] , 10) == 0)
+	       		if (memcpy(buffer, ALPHA[24] , 10) == 0)
 	   			{
 	   				fputc(ALPHA_REVERSE[24], out);
 	   				buffer[0] = ch;
@@ -306,14 +306,14 @@ void decompress (char *infile, char *outfile)
 	   			}
 	       		break;
 	       	case 12:
-	       		if (strncmp(buffer, ALPHA[23] , 11) == 0)
+	       		if (memcpy(buffer, ALPHA[23] , 11) == 0)
 	   			{
 	   				fputc(ALPHA_REVERSE[23], out);
 	   				buffer[0] = ch;
 					i=2;
 					
 	   			}
-	   			if (strncmp(buffer, ALPHA[16] , 11) == 0)
+	   			if (memcpy(buffer, ALPHA[16] , 11) == 0)
 	   			{
 	   				fputc(ALPHA_REVERSE[16], out);
 	   				buffer[0] = ch;
