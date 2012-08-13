@@ -23,7 +23,7 @@ void compress(char *infile, char *outfile)
 	FILE *in = fopen(infile, "r");
 	FILE *out = fopen (outfile , "w");
 	char buffer[11];
-    short short int ch;
+    short int ch;
 
     if (in == NULL)
     {
@@ -105,178 +105,228 @@ void decompress (char *infile, char *outfile)
 	
 	while ((ch = fgetc(in)) != EOF) 
 	{
-       	if (i == 4)
+       	switch(i)
        	{
+       		case 4:
    			if (strncmp(buffer, "001", 3) == 0)
    			{
    				fputc(32, out);
-   				i = 1;
+   				buffer[0] = ch;
+				i=2;
+				
    			}
    			if (strncmp(buffer, ALPHA[4], 3) == 0)
    			{
    				fputc(ALPHA_REVERSE[4], out);
-   				i = 1;
+   				buffer[0] = ch;
+				i=2;
+				
    			}
-   			
+       		break;
+       		case 5:
+       				if (strncmp(buffer, ALPHA[13], 4) == 0)
+	   			{
+	   				fputc(ALPHA_REVERSE[13], out);
+	   				buffer[0] = ch;
+					i=2;
+					
+	   			}
+	   			if (strncmp(buffer, ALPHA[8], 4) == 0)
+	   			{
+	   				fputc(ALPHA_REVERSE[8], out);
+	   				buffer[0] = ch;
+					i=2;
+					
+	   			}
+	   			if (strncmp(buffer, ALPHA[18], 4) == 0)
+	   			{
+	   				fputc(ALPHA_REVERSE[18], out);
+	   				buffer[0] = ch;
+					i=2;
+					
+	   			}
+	   			if (strncmp(buffer, ALPHA[17], 4) == 0)
+	   			{
+	   				fputc(ALPHA_REVERSE[17], out);
+	   				buffer[0] = ch;
+					i=2;
+					
+	   			}
+	   			if (strncmp(buffer, ALPHA[0], 4) == 0)
+	   			{
+	   				fputc(ALPHA_REVERSE[0], out);
+	   				buffer[0] = ch;
+					i=2;
+					
+	   			}
+	   			if (strncmp(buffer, ALPHA[19], 4) == 0)
+	   			{
+	   				fputc(ALPHA_REVERSE[19], out);
+	   				buffer[0] = ch;
+					i=2;
+					
+	   			}
+	   			if (strncmp(buffer, ALPHA[3], 4) == 0)
+	   			{
+	   				fputc(ALPHA_REVERSE[3], out);
+	   				buffer[0] = ch;
+					i=2;
+					
+	   			}
+       			break;
+       		case 6:
+	       		if (strncmp(buffer, ALPHA[7], 5) == 0)
+	   			{
+	   				fputc(ALPHA_REVERSE[7], out);
+	   				buffer[0] = ch;
+					i=2;
+					
+	   			}
+	   			if (strncmp(buffer, ALPHA[20], 5) == 0)
+	   			{
+	   				fputc(ALPHA_REVERSE[20], out);
+	   				buffer[0] = ch;
+					i=2;
+					
+	   			}
+	   			if (strncmp(buffer, ALPHA[11], 5) == 0)
+	   			{
+	   				fputc(ALPHA_REVERSE[11], out);
+	   				buffer[0] = ch;
+					i=2;
+					
+	   			}
+	   			if (strncmp(buffer, ALPHA[2], 5) == 0)
+	   			{
+	   				fputc(ALPHA_REVERSE[2], out);
+	   				buffer[0] = ch;
+					i=2;
+					
+	   			}
+	   			if (strncmp(buffer, ALPHA[6], 5) == 0)
+	   			{
+	   				fputc(ALPHA_REVERSE[6], out);
+	   				buffer[0] = ch;
+					i=2;
+					
+	   			}
+	   			if (strncmp(buffer, ALPHA[12], 5) == 0)
+	   			{
+	   				fputc(ALPHA_REVERSE[12], out);
+	   				buffer[0] = ch;
+					i=2;
+					
+	   			}
+	   			if (strncmp(buffer, ALPHA[14], 5) == 0)
+	   			{
+	   				fputc(ALPHA_REVERSE[14], out);
+	   				buffer[0] = ch;
+					i=2;
+					
+	   			}
+       			break;
+       		case 7:
+	       		if (strncmp(buffer, ALPHA[22], 6) == 0)
+	   			{
+	   				fputc(ALPHA_REVERSE[22], out);
+	   				buffer[0] = ch;
+					i=2;
+					
+	   			}
+	   			if (strncmp(buffer, ALPHA[1], 6) == 0)
+	   			{
+	   				fputc(ALPHA_REVERSE[1], out);
+	   				buffer[0] = ch;
+					i=2;
+					
+	   			}
+	   			if (strncmp(buffer, ALPHA[5], 6) == 0)
+	   			{
+	   				fputc(ALPHA_REVERSE[5], out);
+	   				buffer[0] = ch;
+					i=2;
+					
+	   			}
+	   			if (strncmp(buffer, ALPHA[10], 6) == 0)
+	   			{
+	   				fputc(ALPHA_REVERSE[10], out);
+	   				buffer[0] = ch;
+					i=2;
+					
+	   			}
+	       		break;
+       		case 8:
+       			if (strncmp(buffer, ALPHA[25], 7) == 0)
+	   			{
+	   				fputc(ALPHA_REVERSE[25], out);
+	   				buffer[0] = ch;
+					i=2;
+					
+	   			}
+	   			if (strncmp(buffer, ALPHA[15], 7) == 0)
+	   			{
+	   				fputc(ALPHA_REVERSE[15], out);
+	   				buffer[0] = ch;
+					i=2;
+					
+	   			}
+	   			if (strncmp(buffer, ALPHA[21], 7) == 0)
+	   			{
+	   				fputc(ALPHA_REVERSE[21], out);
+	   				buffer[0] = ch;
+					i=2;
+					
+	   			}
+	       		break;
+       		case 9:
+       			if (strncmp(buffer, "11111001", 8) == 0)
+	   			{
+	   				fputc(225, out);
+	   				buffer[0] = ch;
+					i=2;
+					
+	   			}
+       			break;
+       		case 10:
+	       		if (strncmp(buffer, ALPHA[9] , 9) == 0)
+	   			{
+	   				fputc(ALPHA_REVERSE[9], out);
+	   				buffer[0] = ch;
+					i=2;
+					
+	   			}
+       			break;
+       		case 11:
+	       		if (strncmp(buffer, ALPHA[24] , 10) == 0)
+	   			{
+	   				fputc(ALPHA_REVERSE[24], out);
+	   				buffer[0] = ch;
+					i=2;
+					
+	   			}
+	       		break;
+	       	case 12:
+	       		if (strncmp(buffer, ALPHA[23] , 11) == 0)
+	   			{
+	   				fputc(ALPHA_REVERSE[23], out);
+	   				buffer[0] = ch;
+					i=2;
+					
+	   			}
+	   			if (strncmp(buffer, ALPHA[16] , 11) == 0)
+	   			{
+	   				fputc(ALPHA_REVERSE[16], out);
+	   				buffer[0] = ch;
+					i=2;
+					
+	   			}
+	       		break;
+	       	default:
+	       		buffer[i-1] = ch;
+       			i++;
+       			break;
        	}
-       	if (i == 5)
-       	{
-   			if (strncmp(buffer, ALPHA[13], 4) == 0)
-   			{
-   				fputc(ALPHA_REVERSE[13], out);
-   				i = 1;
-   			}
-   			if (strncmp(buffer, ALPHA[8], 4) == 0)
-   			{
-   				fputc(ALPHA_REVERSE[8], out);
-   				i = 1;
-   			}
-   			if (strncmp(buffer, ALPHA[18], 4) == 0)
-   			{
-   				fputc(ALPHA_REVERSE[18], out);
-   				i = 1;
-   			}
-   			if (strncmp(buffer, ALPHA[17], 4) == 0)
-   			{
-   				fputc(ALPHA_REVERSE[17], out);
-   				i = 1;
-   			}
-   			if (strncmp(buffer, ALPHA[0], 4) == 0)
-   			{
-   				fputc(ALPHA_REVERSE[0], out);
-   				i = 1;
-   			}
-   			if (strncmp(buffer, ALPHA[19], 4) == 0)
-   			{
-   				fputc(ALPHA_REVERSE[19], out);
-   				i = 1;
-   			}
-   			if (strncmp(buffer, ALPHA[3], 4) == 0)
-   			{
-   				fputc(ALPHA_REVERSE[3], out);
-   				i = 1;
-   			}
-       	}
-       	if (i == 6)
-       	{
-   			if (strncmp(buffer, ALPHA[7], 5) == 0)
-   			{
-   				fputc(ALPHA_REVERSE[7], out);
-   				i = 1;
-   			}
-   			if (strncmp(buffer, ALPHA[20], 5) == 0)
-   			{
-   				fputc(ALPHA_REVERSE[20], out);
-   				i = 1;
-   			}
-   			if (strncmp(buffer, ALPHA[11], 5) == 0)
-   			{
-   				fputc(ALPHA_REVERSE[11], out);
-   				i = 1;
-   			}
-   			if (strncmp(buffer, ALPHA[2], 5) == 0)
-   			{
-   				fputc(ALPHA_REVERSE[2], out);
-   				i = 1;
-   			}
-   			if (strncmp(buffer, ALPHA[6], 5) == 0)
-   			{
-   				fputc(ALPHA_REVERSE[6], out);
-   				i = 1;
-   			}
-   			if (strncmp(buffer, ALPHA[12], 5) == 0)
-   			{
-   				fputc(ALPHA_REVERSE[12], out);
-   				i = 1;
-   			}
-   			if (strncmp(buffer, ALPHA[14], 5) == 0)
-   			{
-   				fputc(ALPHA_REVERSE[14], out);
-   				i = 1;
-   			}
-       	}
-       	if (i == 7)
-       	{
-   			if (strncmp(buffer, ALPHA[22], 6) == 0)
-   			{
-   				fputc(ALPHA_REVERSE[22], out);
-   				i = 1;
-   			}
-   			if (strncmp(buffer, ALPHA[1], 6) == 0)
-   			{
-   				fputc(ALPHA_REVERSE[1], out);
-   				i = 1;
-   			}
-   			if (strncmp(buffer, ALPHA[5], 6) == 0)
-   			{
-   				fputc(ALPHA_REVERSE[5], out);
-   				i = 1;
-   			}
-   			if (strncmp(buffer, ALPHA[10], 6) == 0)
-   			{
-   				fputc(ALPHA_REVERSE[10], out);
-   				i = 1;
-   			}
-       	}
-        if (i == 8)
-       	{
-   			if (strncmp(buffer, ALPHA[25], 7) == 0)
-   			{
-   				fputc(ALPHA_REVERSE[25], out);
-   				i = 1;
-   			}
-   			if (strncmp(buffer, ALPHA[15], 7) == 0)
-   			{
-   				fputc(ALPHA_REVERSE[15], out);
-   				i = 1;
-   			}
-   			if (strncmp(buffer, ALPHA[21], 7) == 0)
-   			{
-   				fputc(ALPHA_REVERSE[21], out);
-   				i = 1;
-   			}
-       	}
-       	if (i == 9)
-       	{
-       		if (strncmp(buffer, "11111001", 8) == 0)
-   			{
-   				fputc(225, out);
-   				i = 1;
-   			}
-       	}
-       	if (i == 10)
-       	{
-       		if (strncmp(buffer, ALPHA[9] , 9) == 0)
-   			{
-   				fputc(ALPHA_REVERSE[9], out);
-   				i = 1;
-   			}
-       	}
-       	if (i == 11)
-       	{
-       		if (strncmp(buffer, ALPHA[24] , 10) == 0)
-   			{
-   				fputc(ALPHA_REVERSE[24], out);
-   				i = 1;
-   			}
-       	}
-        else if(i == 12)
-        {
-        	if (strncmp(buffer, ALPHA[23] , 11) == 0)
-   			{
-   				fputc(ALPHA_REVERSE[23], out);
-   				i = 1;
-   			}
-   			if (strncmp(buffer, ALPHA[16] , 11) == 0)
-   			{
-   				fputc(ALPHA_REVERSE[16], out);
-   				i = 1;
-   			}
-        }
         
-		buffer[i-1] = ch;
-		i++;
-
     }
     printf("Decompression is done!\n");
     fclose(in);
