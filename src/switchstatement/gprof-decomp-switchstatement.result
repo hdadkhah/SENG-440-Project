@@ -3,11 +3,14 @@ Flat profile:
 Each sample counts as 0.01 seconds.
   %   cumulative   self              self     total           
  time   seconds   seconds    calls  ms/call  ms/call  name    
- 50.82      0.93     0.93                             getc
- 20.77      1.31     0.38                             strncmp
- 18.58      1.65     0.34        1   340.00   340.00  decompress
-  9.84      1.83     0.18                             fputc
-  0.00      1.83     0.00        1     0.00   340.00  main
+ 50.82      0.93     0.93                             fputc
+ 18.58      1.27     0.34        1   340.00   340.00  decompress
+ 14.21      1.53     0.26                             mallinfo
+  7.10      1.66     0.13                             puts
+  6.01      1.77     0.11                             posix_memalign
+  2.73      1.82     0.05                             fwrite
+  0.55      1.83     0.01                             malloc_info
+  0.00      1.83     0.00        1     0.00     0.00  compress
 
  %         the percentage of the total running time of the
 time       program used by this function.
@@ -43,24 +46,33 @@ granularity: each sample hit covers 4 byte(s) for 0.55% of 1.83 seconds
 
 index % time    self  children    called     name
                                                  <spontaneous>
-[1]     50.8    0.93    0.00                 getc [1]
+[1]     50.8    0.93    0.00                 fputc [1]
+-----------------------------------------------
+                0.34    0.00       1/1           main [3]
+[2]     18.6    0.34    0.00       1         decompress [2]
+                0.00    0.00       1/1           compress [9]
 -----------------------------------------------
                                                  <spontaneous>
-[2]     20.8    0.38    0.00                 strncmp [2]
------------------------------------------------
-                0.34    0.00       1/1           main [4]
-[3]     18.6    0.34    0.00       1         decompress [3]
------------------------------------------------
-                0.00    0.34       1/1           __libc_start_main [5]
-[4]     18.6    0.00    0.34       1         main [4]
-                0.34    0.00       1/1           decompress [3]
+[3]     18.6    0.00    0.34                 main [3]
+                0.34    0.00       1/1           decompress [2]
 -----------------------------------------------
                                                  <spontaneous>
-[5]     18.6    0.00    0.34                 __libc_start_main [5]
-                0.00    0.34       1/1           main [4]
+[4]     14.2    0.26    0.00                 mallinfo [4]
 -----------------------------------------------
                                                  <spontaneous>
-[6]      9.8    0.18    0.00                 fputc [6]
+[5]      7.1    0.13    0.00                 puts [5]
+-----------------------------------------------
+                                                 <spontaneous>
+[6]      6.0    0.11    0.00                 posix_memalign [6]
+-----------------------------------------------
+                                                 <spontaneous>
+[7]      2.7    0.05    0.00                 fwrite [7]
+-----------------------------------------------
+                                                 <spontaneous>
+[8]      0.5    0.01    0.00                 malloc_info [8]
+-----------------------------------------------
+                0.00    0.00       1/1           decompress [2]
+[9]      0.0    0.00    0.00       1         compress [9]
 -----------------------------------------------
 
  This table describes the call tree of the program, and was sorted by
@@ -148,5 +160,6 @@ index % time    self  children    called     name
 
 Index by function name
 
-   [3] decompress              [1] getc                    [2] strncmp
-   [6] fputc                   [4] main
+   [9] compress                [7] fwrite                  [6] posix_memalign
+   [2] decompress              [4] mallinfo                [5] puts
+   [1] fputc                   [8] malloc_info
