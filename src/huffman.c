@@ -23,7 +23,7 @@ void compress(char *infile, char *outfile)
 	FILE *in = fopen(infile, "r");
 	FILE *out = fopen (outfile , "w");
 	char buffer[11];
-    int ch;
+    short short int ch;
 
     if (in == NULL)
     {
@@ -33,8 +33,14 @@ void compress(char *infile, char *outfile)
 		
 	//set the pointer to the begining of file	
 	fseek ( out , 0 , SEEK_SET );
-	while ((ch = tolower(fgetc(in)))!= EOF) 
+	while ((tolower(ch = fgetc(in)))!=EOF) 
 	{
+		ch = fgetc(in);
+		ch = tolower(ch);
+		if (ch == EOF)
+			break;
+		else
+		{
 			 /* since the space and the character § are out of range of our alphabet and we use integer arithmetic to figu
 			 	re out the huffman value, we put sepeate if statement for them*/
 			 if (ch == 32)
@@ -51,7 +57,7 @@ void compress(char *infile, char *outfile)
 			 	alphabet and space and §*/
 			 	if ((ch > 96) & (ch < 123))
 			 	{	 
-					strcpy(buffer,ALPHA[(int)ch-97]);
+					strcpy(buffer,ALPHA[(short int)ch-97]);
 				}
 				else
 				{
@@ -60,6 +66,7 @@ void compress(char *infile, char *outfile)
 			 }
 			 //Now write the string buffer to the file
 			 fwrite (buffer,1,strlen(buffer),out);
+		}
 	}
 	printf("Compression is done!\n");
     fclose(in);
@@ -78,10 +85,10 @@ void decompress (char *infile, char *outfile)
 	char symbol_to_encode;
 	FILE *in = fopen(infile, "r");
 	FILE *out = fopen (outfile , "w");
-	int currentbuffersize;
-    int ch;
-    int i;
-    int j;
+	short int currentbuffersize;
+    short int ch;
+    short int i;
+    short int j;
 
     if (in == NULL)
     {
@@ -280,8 +287,8 @@ void decompress (char *infile, char *outfile)
 
 int main(int argc, char *argv[])
 {
-   int index;
-   int c;
+   short int index;
+   short int c;
    opterr = 0;
 
    while ((c = getopt (argc, argv, "cd")) != -1)
