@@ -33,23 +33,17 @@ void compress(char *infile, char *outfile)
 		
 	//set the pointer to the begining of file	
 	fseek ( out , 0 , SEEK_SET );
-	while (1) 
+	while ((ch = tolower(fgetc(in)))!= EOF) 
 	{
-		ch = fgetc(in);
-		ch = tolower(ch);
-		if (ch == EOF)
-			break;
-		else
-		{
 			 /* since the space and the character § are out of range of our alphabet and we use integer arithmetic to figu
 			 	re out the huffman value, we put sepeate if statement for them*/
 			 if (ch == 32)
 			 {
-			 	fwrite ("001",1,3,out);
+			 	strcpy(buffer, "001");
 			 }
 			 else if (ch == 225)
 			 {
-			 	fwrite ("11111001",1,8,out);
+			 	strcpy(buffer,"11111001");
 			 }
 			 else
 			 {	
@@ -57,11 +51,15 @@ void compress(char *infile, char *outfile)
 			 	alphabet and space and §*/
 			 	if ((ch > 96) & (ch < 123))
 			 	{	 
-					fwrite (ALPHA[(int)ch-97],1,strlen(ALPHA[(int)ch-97]),out);
+					strcpy(buffer,ALPHA[(int)ch-97]);
+				}
+				else
+				{
+					strcpy(buffer,"");
 				}
 			 }
 			 //Now write the string buffer to the file
-		}
+			 fwrite (buffer,1,strlen(buffer),out);
 	}
 	printf("Compression is done!\n");
     fclose(in);
