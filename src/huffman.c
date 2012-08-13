@@ -12,15 +12,13 @@
 #include <unistd.h>
 
 
-char *ALPHA[26] = { "1010", "011110", "10111", "1110", "010", "011111", "11010",
+void compress(char *infile, char *outfile)
+{
+	char *ALPHA[26] = { "1010", "011110", "10111", "1110", "010", "011111", "11010",
 				    "00010", "0110", "111110000", "111111", "10110","11011", "0000", 
 				    "11110", "0111001", "11111000101", "1001", "1000", "1100", "00011",
 				    "1111101", "011101", "11111000100", "1111100011", "0111000" };
-char ALPHA_REVERSE[26] = { 'a' , 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 
-   						   'n', 'o', 'p' , 'q', 'r' , 's', 't', 'u', 'v', 'w', 'x', 'y', 'z' };
-
-void compress(char *infile, char *outfile)
-{
+				    
 	char symbol_to_encode;
 	FILE *in = fopen(infile, "r");
 	FILE *out = fopen (outfile , "w");
@@ -47,11 +45,11 @@ void compress(char *infile, char *outfile)
 			 	re out the huffman value, we put sepeate if statement for them*/
 			 if (ch == 32)
 			 {
-			 	strcpy(buffer, "001");
+			 	fwrite ("001",1,3,out);
 			 }
 			 else if (ch == 225)
 			 {
-			 	strcpy(buffer,"11111001");
+			 	fwrite ("11111001",1,8,out);
 			 }
 			 else
 			 {	
@@ -59,15 +57,10 @@ void compress(char *infile, char *outfile)
 			 	alphabet and space and §*/
 			 	if ((ch > 96) & (ch < 123))
 			 	{	 
-					strcpy(buffer,ALPHA[(int)ch-97]);
-				}
-				else
-				{
-					strcpy(buffer,"");
+					fwrite (ALPHA[(int)ch-97],1,strlen(ALPHA[(int)ch-97]),out);
 				}
 			 }
 			 //Now write the string buffer to the file
-			 fwrite (buffer,1,strlen(buffer),out);
 		}
 	}
 	printf("Compression is done!\n");
@@ -78,6 +71,12 @@ void compress(char *infile, char *outfile)
 
 void decompress (char *infile, char *outfile)
 {
+	char *ALPHA[26] = { "1010", "011110", "10111", "1110", "010", "011111", "11010",
+				    "00010", "0110", "111110000", "111111", "10110","11011", "0000", 
+				    "11110", "0111001", "11111000101", "1001", "1000", "1100", "00011",
+				    "1111101", "011101", "11111000100", "1111100011", "0111000" };
+	char ALPHA_REVERSE[26] = { 'a' , 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 
+   						   'n', 'o', 'p' , 'q', 'r' , 's', 't', 'u', 'v', 'w', 'x', 'y', 'z' };
 	char symbol_to_encode;
 	FILE *in = fopen(infile, "r");
 	FILE *out = fopen (outfile , "w");
