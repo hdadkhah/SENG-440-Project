@@ -1,0 +1,33 @@
+This program will only encode a-z and § and space, the rest will be discarded, its a pure software implementation, 
+so we use integers as bit representation to store the data
+
+In order to compile:
+arm-linux-gnueabi-gcc -static -march=armv5 huffman.c -o huffman.exe 
+
+In order to compress:
+qemu-arm huffman.exe -c input.txt output.txt
+
+In order to decompress:
+qemu-arm huffman.exe -d output.txt original.txt
+
+
+-----------------------------------------------------------------------------------------------------------------------------
+
+In order to enable profiling: 
+arm-linux-gnueabi-gcc -static -march=armv5 huffman.c -o huffman.exe -pg
+
+In order to read profiling data
+gproff huffman.exe
+
+-----------------------------------------------------------------------------------------------------------------------------
+
+In order to generate Assembly code:
+arm-linux-gnueabi-gcc -static -march=armv5 huffman.c -S
+
+In order to recompile Assembly code
+arm-linux-gnueabi-gcc -static -march=armv5 huffman.s -o huffman.exe 
+
+
+
+
+
