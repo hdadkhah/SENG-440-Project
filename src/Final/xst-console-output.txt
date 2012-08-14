@@ -1,0 +1,253 @@
+
+Started : "Synthesize - XST".
+Running xst...
+Command Line: xst -intstyle ise -ifn "/home/rdobson/huffmansanity/HuffmanDecoder/huffman_decoder.xst" -ofn "/home/rdobson/huffmansanity/HuffmanDecoder/huffman_decoder.syr"
+Reading design: huffman_decoder.prj
+
+=========================================================================
+*                          HDL Parsing                                  *
+=========================================================================
+Parsing VHDL file "/home/rdobson/huffmansanity/HuffmanDecoder/mux32.vhd" into library work
+Parsing entity <mux32>.
+Parsing architecture <Behavioral> of entity <mux32>.
+Parsing VHDL file "/home/rdobson/huffmansanity/HuffmanDecoder/table1.vhd" into library work
+Parsing entity <gLUT1>.
+Parsing architecture <Behavioral> of entity <glut1>.
+Parsing VHDL file "/home/rdobson/huffmansanity/HuffmanDecoder/shift_decoder.vhd" into library work
+Parsing entity <shift_decoder>.
+Parsing architecture <Behavioral> of entity <shift_decoder>.
+Parsing VHDL file "/home/rdobson/huffmansanity/HuffmanDecoder/mux2to1.vhd" into library work
+Parsing entity <mux2to1>.
+Parsing architecture <Behavioral> of entity <mux2to1>.
+Parsing VHDL file "/home/rdobson/huffmansanity/HuffmanDecoder/latch32.vhd" into library work
+Parsing entity <register11>.
+Parsing architecture <Behavioral> of entity <register11>.
+Parsing VHDL file "/home/rdobson/huffmansanity/HuffmanDecoder/dk_shift.vhd" into library work
+Parsing entity <dk_shift>.
+Parsing architecture <Behavioral> of entity <dk_shift>.
+Parsing architecture <structural> of entity <dk_shift>.
+Parsing VHDL file "/home/rdobson/huffmansanity/HuffmanDecoder/accumulator.vhd" into library work
+Parsing entity <accumulator>.
+Parsing architecture <Behavioral> of entity <accumulator>.
+Parsing VHDL file "/home/rdobson/huffmansanity/HuffmanDecoder/huffman_decoder.vhd" into library work
+Parsing entity <huffman_decoder>.
+Parsing architecture <structural> of entity <huffman_decoder>.
+
+=========================================================================
+*                            HDL Elaboration                            *
+=========================================================================
+
+Elaborating entity <huffman_decoder> (architecture <structural>) from library <work>.
+
+Elaborating entity <mux2to1> (architecture <Behavioral>) from library <work>.
+
+Elaborating entity <register11> (architecture <Behavioral>) from library <work>.
+
+Elaborating entity <dk_shift> (architecture <structural>) from library <work>.
+
+Elaborating entity <mux32> (architecture <Behavioral>) from library <work>.
+
+Elaborating entity <gLUT1> (architecture <Behavioral>) from library <work>.
+
+Elaborating entity <accumulator> (architecture <Behavioral>) from library <work>.
+
+Elaborating entity <shift_decoder> (architecture <Behavioral>) from library <work>.
+
+=========================================================================
+*                           HDL Synthesis                               *
+=========================================================================
+
+Synthesizing Unit <huffman_decoder>.
+Related source file is "/home/rdobson/huffmansanity/HuffmanDecoder/huffman_decoder.vhd".
+    Summary:
+	no macro.
+Unit <huffman_decoder> synthesized.
+    
+Synthesizing Unit <mux2to1>.
+    Related source file is "/home/rdobson/huffmansanity/HuffmanDecoder/mux2to1.vhd".
+    Summary:
+	inferred   1 Multiplexer(s).
+Unit <mux2to1> synthesized.
+
+Synthesizing Unit <register11>.
+    Related source file is "/home/rdobson/huffmansanity/HuffmanDecoder/latch32.vhd".
+WARNING:Xst:647 - Input <cloak> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
+    Found 32-bit register for signal <reg_out>.
+Found 32-bit register for signal <stored>.
+    Found 1-bit register for signal <send_reset>.
+    Summary:
+	inferred  65 D-type flip-flop(s).
+Unit <register11> synthesized.
+
+Synthesizing Unit <dk_shift>.
+    Related source file is "/home/rdobson/huffmansanity/HuffmanDecoder/dk_shift.vhd".
+    Summary:
+	no macro.
+Unit <dk_shift> synthesized.
+
+Synthesizing Unit <mux32>.
+    Related source file is "/home/rdobson/huffmansanity/HuffmanDecoder/mux32.vhd".
+    Summary:
+	inferred   1 Multiplexer(s).
+Unit <mux32> synthesized.
+
+Synthesizing Unit <gLUT1>.
+    Related source file is "/home/rdobson/huffmansanity/HuffmanDecoder/table1.vhd".
+        Summary:
+	inferred  44 Multiplexer(s).
+Unit <gLUT1> synthesized.
+
+Synthesizing Unit <accumulator>.
+Related source file is "/home/rdobson/huffmansanity/HuffmanDecoder/accumulator.vhd".
+    Found 5-bit register for signal <shift_out>.
+    Found 5-bit adder for signal <soFar[4]_soFar[4]_mux_1_OUT> created at line 41.
+    Summary:
+	inferred   1 Adder/Subtractor(s).
+	inferred   5 D-type flip-flop(s).
+Unit <accumulator> synthesized.
+    
+Synthesizing Unit <shift_decoder>.
+    Related source file is "/home/rdobson/huffmansanity/HuffmanDecoder/shift_decoder.vhd".
+    Found 32x34-bit Read Only RAM for signal <decoded>
+    Summary:
+	inferred   1 RAM(s).
+Unit <shift_decoder> synthesized.
+RTL-Simplification CPUSTAT: 0.02 
+RTL-BasicInf CPUSTAT: 0.15 
+RTL-BasicOpt CPUSTAT: 0.00 
+RTL-Remain-Bus CPUSTAT: 0.00 
+
+=========================================================================
+HDL Synthesis Report
+
+Macro Statistics
+# RAMs                                                 : 1
+ 32x34-bit single-port Read Only RAM                   : 1
+# Adders/Subtractors                                   : 1
+ 5-bit adder                                           : 1
+# Registers                                            : 4
+ 1-bit register                                        : 1
+ 32-bit register                                       : 2
+ 5-bit register                                        : 1
+# Multiplexers                                         : 81
+ 1-bit 2-to-1 multiplexer                              : 32
+ 32-bit 2-to-1 multiplexer                             : 5
+ 4-bit 2-to-1 multiplexer                              : 15
+ 8-bit 2-to-1 multiplexer                              : 29
+
+=========================================================================
+
+=========================================================================
+*                       Advanced HDL Synthesis                          *
+=========================================================================
+
+
+Synthesizing (advanced) Unit <accumulator>.
+The following registers are absorbed into accumulator <soFar>: 1 register on signal <soFar>.
+Unit <accumulator> synthesized (advanced).
+
+Synthesizing (advanced) Unit <shift_decoder>.
+INFO:Xst:3031 - HDL ADVISOR - The RAM <Mram_decoded> will be implemented on LUTs either because you have described an asynchronous read or because of currently unsupported block RAM features. If you have described an asynchronous read, making it synchronous would allow you to take advantage of available block RAM resources, for optimized device usage and improved timings. Please refer to your documentation for coding guidelines.
+    -----------------------------------------------------------------------
+    | ram_type           | Distributed                         |          |
+    -----------------------------------------------------------------------
+    | Port A                                                              |
+    |     aspect ratio   | 32-word x 34-bit                    |          |
+    |     weA            | connected to signal <GND>           | high     |
+    |     addrA          | connected to signal <shift>         |          |
+    |     diA            | connected to signal <GND>           |          |
+    |     doA            | connected to signal <decoded>       |          |
+    -----------------------------------------------------------------------
+Unit <shift_decoder> synthesized (advanced).
+
+=========================================================================
+Advanced HDL Synthesis Report
+
+Macro Statistics
+# RAMs                                                 : 1
+ 32x34-bit single-port distributed Read Only RAM       : 1
+# Accumulators                                         : 1
+ 5-bit up accumulator                                  : 1
+# Registers                                            : 65
+ Flip-Flops                                            : 65
+# Multiplexers                                         : 49
+ 32-bit 2-to-1 multiplexer                             : 5
+ 4-bit 2-to-1 multiplexer                              : 15
+ 8-bit 2-to-1 multiplexer                              : 29
+
+=========================================================================
+
+=========================================================================
+*                         Low Level Synthesis                           *
+=========================================================================
+
+Optimizing unit <huffman_decoder> ...
+
+Optimizing unit <register11> ...
+
+Optimizing unit <gLUT1> ...
+
+Mapping all equations...
+Building and optimizing final netlist ...
+Found area constraint ratio of 100 (+ 5) on block huffman_decoder, actual ratio is 0.
+FlipFlop acumudu/soFar_0 has been replicated 2 time(s)
+FlipFlop acumudu/soFar_1 has been replicated 3 time(s)
+FlipFlop acumudu/soFar_2 has been replicated 1 time(s)
+
+Final Macro Processing ...
+
+=========================================================================
+Final Register Report
+
+Macro Statistics
+# Registers                                            : 76
+ Flip-Flops                                            : 76
+
+=========================================================================
+
+=========================================================================
+*                           Partition Report                            *
+=========================================================================
+
+Partition Implementation Status
+-------------------------------
+
+  No Partitions were found in this design.
+
+-------------------------------
+
+=========================================================================
+*                            Design Summary                             *
+=========================================================================
+
+Clock Information:
+------------------
+-------------------------------------------------------+--------------------------+-------+
+Clock Signal                                           | Clock buffer(FF name)    | Load  |
+-------------------------------------------------------+--------------------------+-------+
+global_clock                                           | BUFGP                    | 11    |
+bigdecoder/Mram_decoded32(bigdecoder/Mram_decoded321:O)| BUFG(*)(LATCH/reg_out_31)| 65    |
+-------------------------------------------------------+--------------------------+-------+
+(*) This 1 clock signal(s) are generated by combinatorial logic,
+and XST is not able to identify which are the primary clock signals.
+Please use the CLOCK_SIGNAL constraint to specify the clock signal(s) generated by combinatorial logic.
+
+Asynchronous Control Signals Information:
+----------------------------------------
+No asynchronous control signals found in this design
+
+Timing Summary:
+---------------
+Speed Grade: -3
+
+   Minimum period: 7.550ns (Maximum Frequency: 132.451MHz)
+   Minimum input arrival time before clock: 2.611ns
+   Maximum output required time after clock: 10.824ns
+   Maximum combinational path delay: No path found
+
+=========================================================================
+
+Process "Synthesize - XST" completed successfully
+
+Started : "Launching RTL Schematic Viewer for huffman_decoder.ngr".
+
